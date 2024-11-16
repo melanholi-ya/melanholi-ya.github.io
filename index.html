@@ -4,14 +4,245 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Website</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <title>Full Page Scrolling Sections</title>
+    <style>
+        /* CSS Variables for theme */
+        :root {
+            --bg-color: #820604;
+            --primary-color: #3498db;
+            --button-bg-color: rgba(55, 3, 2, 0.65);
+            --button-text-color: #fff;
+            --section-padding: 20px;
+            --transition-duration: 1s;
+            --form-max-width: 400px;
+        }
+
+        /* Basic Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body, html {
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .section {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: var(--section-padding);
+            position: relative;
+            background-color: var(--bg-color);
+            color: #ffffff;
+        }
+
+        /* Background Image for Section 1 */
+        .section--1 {
+            background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20240703/pngtree-beautiful-cat-with-sunglasses-image_15851864.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Section 2 Styling */
+        .section--2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .section--2__content {
+            display: flex;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .section--2__left, .section--2__right {
+            flex: 1;
+            padding: var(--section-padding);
+        }
+
+        .section--2__right img {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+        }
+
+        /* Form Styling in Section 3 */
+        .section--3__form {
+            padding: var(--section-padding);
+            box-sizing: border-box;
+        }
+
+        .section--3__form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+
+        .section--3__form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .section--3__form-group input {
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        /* Hide spin buttons */
+        .section--3__form-group input[type="number"] {
+            -moz-appearance: textfield;
+        }
+        .section--3__form-group input::-webkit-outer-spin-button,
+        .section--3__form-group input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+
+        /* Navigation Buttons Styling */
+        .section__buttons {
+            position: absolute;
+            display: flex;
+            gap: 10px;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .section__buttons_top {
+            top: var(--section-padding);
+        }
+
+        .section__buttons_bottom {
+            bottom: var(--section-padding);
+        }
+
+        .section__button {
+            background-color: var(--button-bg-color);
+            color: var(--button-text-color);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 24px;
+            font-stretch: condensed;
+            border: 1.5px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .section__button:hover {
+            background-color: var(--button-bg-color);
+        }
+
+        /* Hidden class for hiding navigation during scroll */
+        .section__buttons.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
 </head>
 <body>
-<main>
-    <h1>Кіт, смааайл =) <3</h1>
-</main>
-<script src="index.js"></script>
+<!-- Section 1 -->
+<div class="section section--1">
+    <div class="section__buttons section__buttons_bottom">
+        <button class="section__button" onclick="scrollToSection(2)">Дізнатись деталі</button>
+    </div>
+</div>
+
+<!-- Section 2 -->
+<div class="section section--2">
+    <div class="section--2__content">
+        <div class="section--2__left">
+            <p>Опис вистави</p>
+        </div>
+        <div class="section--2__right">
+            <img srcset="
+                https://static.vecteezy.com/system/resources/previews/049/548/660/non_2x/a-tight-shot-of-a-cat-donning-sunglasses-and-a-pink-fur-coat-embellished-with-sequins-on-its-collar-photo.jpg 1744w,
+                https://static.vecteezy.com/system/resources/previews/049/548/660/large_2x/a-tight-shot-of-a-cat-donning-sunglasses-and-a-pink-fur-coat-embellished-with-sequins-on-its-collar-photo.jpg 3488w"
+                 alt="A fashionable cat in sunglasses">
+        </div>
+    </div>
+    <div class="section__buttons section__buttons_top">
+        <button class="section__button" onclick="scrollToSection(1)">&#708;</button>
+    </div>
+    <div class="section__buttons section__buttons_bottom">
+        <button class="section__button" onclick="scrollToSection(3)">&#709;</button>
+    </div>
+</div>
+
+<!-- Section 3 -->
+<div class="section section--3">
+    <div class="section--3__form">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdfG2K5mrVoqv-K8JSEc9g9Q51a8hKhm4aJbpU6So6Lr1Af8A/viewform?embedded=true" width="640" height="702" frameborder="0" marginheight="0" marginwidth="0">Загрузка…</iframe>
+    </div>
+    <div class="section__buttons section__buttons_top">
+        <button class="section__button" onclick="scrollToSection(2)">&#708;</button>
+    </div>
+    <div class="section__buttons section__buttons_bottom">
+        <button class="section__button" onclick="scrollToSection(4)">&#709;</button>
+    </div>
+</div>
+
+<!-- Section 4 -->
+<div class="section section--4">
+    <p>Дякую за увагу!</p>
+    <div class="section__buttons section__buttons_top">
+        <button class="section__button" onclick="scrollToSection(3)">&#708;</button>
+    </div>
+</div>
+
+<script>
+    const navButtons = document.querySelectorAll(".section__buttons");
+    const totalSections = 4;
+    let currentSection = 1;
+    let isScrolling = false;
+
+    // Function to scroll to a specific section
+    function scrollToSection(section) {
+        if (section >= 1 && section <= totalSections && !isScrolling) {
+            navButtons.forEach(btn => {
+               btn.classList.add("hidden");
+            });
+            isScrolling = true;
+            currentSection = section;
+            document.querySelector(`.section--${section}`).scrollIntoView({ behavior: 'smooth' });
+
+            setTimeout(() => {
+                isScrolling = false;
+                navButtons.forEach(btn => {
+                    btn.classList.remove("hidden");
+                });
+            }, 500); // Adjust timeout as needed
+        }
+    }
+
+    // Function to handle scroll event
+    function handleScroll(event) {
+        if (isScrolling) return;
+
+        if (event.deltaY > 0 && currentSection < totalSections) {
+            scrollToSection(currentSection + 1);
+        } else if (event.deltaY < 0 && currentSection > 1) {
+            scrollToSection(currentSection - 1);
+        }
+    }
+
+    // Adding scroll event listener
+    window.addEventListener('wheel', handleScroll);
+
+    // Input masking for phone and email validation
+    const phoneInput = document.getElementById("phone");
+    phoneInput.addEventListener("input", () => {
+        let value = phoneInput.value.replace(/\D/g, "");
+        phoneInput.value = "+380 " + value.slice(3, 6) + " " + value.slice(6, 9) + " " + value.slice(9, 12);
+    });
+</script>
 </body>
 </html>
