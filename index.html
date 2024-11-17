@@ -69,6 +69,7 @@
             display: flex;
             max-width: 800px;
             width: 100%;
+            gap: 10px;
         }
 
         .section--2__left, .section--2__right {
@@ -170,6 +171,10 @@
         @media screen and (max-width: 576px) {
             :root {
                 --section-padding: 30px;
+            }
+
+            .section {
+                overflow: hidden;
             }
 
             .section--2__content {
