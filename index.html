@@ -75,7 +75,6 @@
             flex: 1;
             display: flex;
             align-items: center;
-            padding: var(--section-padding);
         }
 
         .section--2__right img {
@@ -86,7 +85,6 @@
 
         /* Form Styling in Section 3 */
         .section--3__form {
-            padding: var(--section-padding);
             box-sizing: border-box;
         }
 
@@ -134,11 +132,11 @@
         }
 
         .section__buttons_top {
-            top: var(--section-padding);
+            top: 30px;
         }
 
         .section__buttons_bottom {
-            bottom: var(--section-padding);
+            bottom: 30px;
         }
 
         .section__button {
@@ -163,6 +161,46 @@
         .section__buttons.hidden {
             opacity: 0;
             pointer-events: none;
+        }
+
+        iframe, object, embed {
+            max-width: 100%;
+        }
+
+        @media screen and (max-width: 576px) {
+            :root {
+                --section-padding: 30px;
+            }
+
+            .section--2__content {
+                flex-direction: column;
+                font-size: 14px;
+
+            }
+
+            .section__button {
+                border-width: 1px;
+            }
+
+            .section__button, .section--1 .section__button {
+                font-size: 16px;
+            }
+
+            .section--3 {
+                padding: 10px;
+            }
+
+            .section__buttons_top {
+                top: 10px;
+            }
+
+            .section__buttons_bottom {
+                bottom: 10px;
+            }
+
+            .section__buttons_top button, .section__buttons_bottom button {
+                padding: 6px 14px;
+            }
         }
     </style>
 </head>
@@ -259,13 +297,6 @@
 
     // Adding scroll event listener
     window.addEventListener('wheel', handleScroll);
-
-    // Input masking for phone and email validation
-    const phoneInput = document.getElementById("phone");
-    phoneInput.addEventListener("input", () => {
-        let value = phoneInput.value.replace(/\D/g, "");
-        phoneInput.value = "+380 " + value.slice(3, 6) + " " + value.slice(6, 9) + " " + value.slice(9, 12);
-    });
 </script>
 </body>
 </html>
