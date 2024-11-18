@@ -67,9 +67,10 @@
 
         .section--2__content {
             display: flex;
-            max-width: 800px;
+            max-width: 940px;
             width: 100%;
-            gap: 10px;
+            gap: 90px;
+            font-size: 22px;
         }
 
         .section--2__left, .section--2__right {
@@ -82,6 +83,7 @@
             width: 100%;
             height: auto;
             max-width: 100%;
+            transform: scale(1.1);
         }
 
         /* Form Styling in Section 3 */
@@ -174,13 +176,23 @@
             }
 
             .section {
+                height: 100svh;
                 overflow: hidden;
             }
 
             .section--2__content {
                 flex-direction: column;
                 font-size: 14px;
+            }
 
+            .section--2__content {
+                max-width: 100%;
+                gap: 10px;
+                font-size: 14px;
+            }
+
+            .section--2__right img {
+                transform: none;
             }
 
             .section__button {
