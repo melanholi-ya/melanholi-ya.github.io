@@ -297,8 +297,6 @@
 
     // Function to scroll to a specific section
     function scrollToSection(section) {
-        if (window.innerWidth <= 576) return;
-
         if (section >= 1 && section <= totalSections && !isScrolling) {
             navButtons.forEach(btn => {
                btn.classList.add("hidden");
